@@ -46,10 +46,7 @@ const useEditorHotkeys = (editor: Editor) => {
         if (event.shiftKey && !isMainTitle) {
           Editor.insertText(editor, "\n");
         } else {
-          Transforms.splitNodes(editor, {
-            always: true,
-          });
-
+          Transforms.splitNodes(editor, { always: true });
           Transforms.setNodes(editor, { type: "paragraph" });
         }
       }
