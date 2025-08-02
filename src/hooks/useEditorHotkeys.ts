@@ -44,7 +44,7 @@ const useEditorHotkeys = (editor: Editor) => {
         const isMainTitle = isMainTitleElement(editor);
 
         if (event.shiftKey && !isMainTitle) {
-          Editor.insertText(editor, "\n");
+          Editor.insertSoftBreak(editor);
         } else {
           Transforms.splitNodes(editor, { always: true });
           Transforms.setNodes(editor, { type: "paragraph" });

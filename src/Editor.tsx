@@ -43,8 +43,7 @@ function Editor() {
       //   }
       // }}
       // onSelectionChange={(e) => console.log("selection", e)}
-      // onValueChange={(e) => console.log("valueChange", e)}
-    >
+      onValueChange={(e) => console.log("valueChange", e)}>
       <Editable
         placeholder="Enter some rich text…"
         spellCheck
@@ -54,6 +53,7 @@ function Editor() {
           border: "1px solid",
           minWidth: "500px",
           minHeight: "500px",
+          outline: "none",
         }}
         onKeyDown={hotkeyEvents}
       />

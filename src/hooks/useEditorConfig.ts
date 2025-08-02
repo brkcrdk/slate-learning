@@ -3,6 +3,7 @@ import { createEditor } from "slate";
 import { withReact } from "slate-react";
 import { withHistory } from "slate-history";
 import withLayout from "./withLayout";
+import withInsertSoftBreak from "./withInsertSoftBreak";
 
 /**
  * Bu hookta editör instance'ını oluşturuyoruz. Bu instancı daha sonra kullanmak
@@ -14,12 +15,12 @@ import withLayout from "./withLayout";
  */
 function useEditorConfig() {
   return useMemo(() => {
-    let  editor = createEditor();
+    let editor = createEditor();
     editor = withReact(editor);
     editor = withHistory(editor);
     editor = withLayout(editor);
+    editor = withInsertSoftBreak(editor);
     return editor;
-
   }, []);
 }
 
