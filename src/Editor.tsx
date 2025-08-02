@@ -50,18 +50,6 @@ function Editor() {
         spellCheck
         autoFocus
         renderElement={renderElement}
-        // renderPlaceholder={({
-        //   children,
-        //   attributes,
-        // }: RenderPlaceholderProps) => (
-        //   <div {...attributes}>
-        //     <p>{children}</p>
-        //     <pre>
-        //       Use the renderPlaceholder prop to customize rendering of the
-        //       placeholder
-        //     </pre>
-        //   </div>
-        // )}
         style={{
           border: "1px solid",
           minWidth: "500px",
