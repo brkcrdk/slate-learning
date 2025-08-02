@@ -2,9 +2,10 @@
 import type { RenderElementProps } from "slate-react";
 import CodeBlock from "./CodeBlock";
 import MainTitleBlock from "./MainTitleBlock";
+import ParagraphBlock from "./ParagraphBlock";
 
 function Block(props: RenderElementProps) {
-  const { attributes, children, element } = props;
+  const { element } = props;
 
   if (element.type === "main-title") {
     return <MainTitleBlock {...props} />;
@@ -14,7 +15,7 @@ function Block(props: RenderElementProps) {
     return <CodeBlock {...props} />;
   }
 
-  return <p {...attributes}>{children}</p>;
+  return <ParagraphBlock {...props} />;
 }
 
 export default Block;

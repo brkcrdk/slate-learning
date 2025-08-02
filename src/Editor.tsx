@@ -54,6 +54,7 @@ function Editor() {
           minWidth: "500px",
           minHeight: "500px",
           outline: "none",
+          padding: "0.5rem",
         }}
         onKeyDown={hotkeyEvents}
       />
