@@ -1,6 +1,10 @@
 import { Editor, Transforms } from "slate";
 import type { MainTitleElement } from "../types/Slate";
 
+/**
+ * Bu plugin ile editorun ana başlığı olan bloğun silinmesini engelliyoruz.
+ * Ayrıca onun üstüne de bir blok eklenmesini de engelliyoruz.
+ */
 function withLayout(editor: Editor) {
    const { normalizeNode } = editor;
 
