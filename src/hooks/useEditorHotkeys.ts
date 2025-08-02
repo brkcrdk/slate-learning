@@ -1,7 +1,7 @@
 
 import { useCallback, type KeyboardEvent } from "react";
 import { Editor, Transforms, Element, } from "slate"
-import isMainTitleElement from "./utils/isMainTitleElement";
+import isMainTitleElement from "../utils/isMainTitleElement";
 
 /**
  * Bu hook editörde kullanılan tüm key işlemlerinde almak istediğimiz callbackleri tuttuğumuz yerdir.

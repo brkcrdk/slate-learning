@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Slate, Editable, type RenderElementProps } from "slate-react";
-import useEditorHotkeys from "./useEditorHotkeys";
+import useEditorHotkeys from "./hooks/useEditorHotkeys";
 import Block from "./Block";
 import useEditorConfig from "./hooks/useEditorConfig";
 
