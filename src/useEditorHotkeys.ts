@@ -3,7 +3,15 @@ import { useCallback, type KeyboardEvent } from "react";
 import { Editor, Transforms, Element, } from "slate"
 import isMainTitleElement from "./utils/isMainTitleElement";
 
+/**
+ * Bu hook editörde kullanılan tüm key işlemlerinde almak istediğimiz callbackleri tuttuğumuz yerdir.
+ * Tüm eventleri callback ile sardığımız için bir hook içinde yazıyoruz.
+ */
 const useEditorHotkeys = (editor: Editor) => {
+  /**
+   * Bu callback ile bir bloğu code bloğuna paragraph bloğuna çevirebiliyoruz. Bu işlem toggle yapmayı öğrenmek için
+   * bir demo olarak düşünülebilir.
+   */
   const toggleCodeBlock = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === "`" && event.ctrlKey) {
@@ -23,6 +31,11 @@ const useEditorHotkeys = (editor: Editor) => {
     [editor]
   );
 
+  /**
+   * Bu callback enter tuşunda alacağımız aksiyonları yönettiğimiz callback.
+   * - Eğer shift tuşuna basılı bir şekilde entera basarsak yeni bir satır eklemiş oluyoruz. Bu satır mevcut blok ne olursa olsun paragragh olarak ekleniyor.
+   * - Eğer enter+shift tuşuna title içinde basarsak çalışmıyor. Başlıkta sadece enter tuşuna basarak yeni bir satır tuşuna geçiriyoruz.
+   */
   const handleEnter = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === "Enter") {
