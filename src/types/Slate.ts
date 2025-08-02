@@ -1,23 +1,26 @@
 import type { BaseEditor, Descendant } from "slate";
 import { ReactEditor } from "slate-react";
 
-type HeadingElement = {
+export type MainTitleElement = {
   type: "main-title";
   align?: string;
   children: Descendant[];
 };
 
-type ParagraphElement = {
+export type ParagraphElement = {
   type: "paragraph";
   children: Descendant[];
 };
 
-type CodeElement = {
+export type CodeElement = {
   type: "code";
   children: Descendant[];
 };
 
-type CustomElementProps = HeadingElement | ParagraphElement | CodeElement;
+export type CustomElementProps =
+  | MainTitleElement
+  | ParagraphElement
+  | CodeElement;
 
 declare module "slate" {
   interface CustomTypes {
