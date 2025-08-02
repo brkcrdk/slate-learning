@@ -1,6 +1,10 @@
 import { Editor, Element } from "slate";
 
- function isMainTitleElement(editor: Editor): boolean {
+/**
+ * Bu helper functionı ile editorde mevcut bloğun `main-title` bloğu olup olmadığını kontrol ediyoruz.
+ * Bu kontrolü tekrar tekrar yaptığımız için bir helper functionı yazıyoruz.
+ */
+function isMainTitleElement(editor: Editor): boolean {
   const [element] =
     Editor.above(editor, {
       match: (node) => Element.isElement(node) && node.type === "main-title",
