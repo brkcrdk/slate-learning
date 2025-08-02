@@ -1,18 +1,17 @@
-import { useCallback, useMemo } from "react";
-import { createEditor } from "slate";
-import { Slate, withReact,Editable, type RenderElementProps } from "slate-react";
+import { useCallback } from "react";
+import { Slate, Editable, type RenderElementProps } from "slate-react";
 import useEditorHotkeys from "./useEditorHotkeys";
 import Block from "./Block";
-
+import useEditorConfig from "./hooks/useEditorConfig";
 
 function Editor() {
-  const editor = useMemo(() => withReact(createEditor()),[])
+  const editor = useEditorConfig();
   const hotkeyEvents = useEditorHotkeys(editor);
 
-   const renderElement = useCallback(
-     (props: RenderElementProps) => <Block  {...props} />,
-     [],
-   );
+  const renderElement = useCallback(
+    (props: RenderElementProps) => <Block {...props} />,
+    []
+  );
 
   return (
     <Slate
@@ -44,7 +43,8 @@ function Editor() {
       //   }
       // }}
       // onSelectionChange={(e) => console.log("selection", e)}
-      onValueChange={(e) => console.log("valueChange", e)}>
+      // onValueChange={(e) => console.log("valueChange", e)}
+    >
       <Editable
         placeholder="Enter some rich text…"
         spellCheck

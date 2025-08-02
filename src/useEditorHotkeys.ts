@@ -1,6 +1,7 @@
 
 import { useCallback, type KeyboardEvent } from "react";
 import { Editor, Transforms, Element, } from "slate"
+import isMainTitleElement from "./utils/isMainTitleElement";
 
 const useEditorHotkeys = (editor: Editor) => {
   const toggleCodeBlock = useCallback(
@@ -9,49 +10,49 @@ const useEditorHotkeys = (editor: Editor) => {
         event.preventDefault();
 
         const [match] = Editor.nodes(editor, {
-          match: (node) => Element.isElement(node) && node.type==='code'
+          match: (node) => Element.isElement(node) && node.type === "code",
         });
 
         Transforms.setNodes(
           editor,
           { type: match ? "paragraph" : "code" },
-          { match: (n) => Element.isElement(n) && Editor.isBlock(editor, n) },
+          { match: (n) => Element.isElement(n) && Editor.isBlock(editor, n) }
         );
       }
     },
-    [editor],
+    [editor]
   );
 
   const handleEnter = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === "Enter") {
         event.preventDefault();
-        if (event.shiftKey) {
-          editor.insertText("\n")
-        }else{
+
+        const isMainTitle = isMainTitleElement(editor);
+
+        if (event.shiftKey && !isMainTitle) {
+          Editor.insertText(editor, "\n");
+        } else {
           Transforms.splitNodes(editor, {
-            always: true, // Boş bloklar için de çalışır
+            always: true,
           });
-          
-          // Yeni blok tipini ayarla (isteğe bağlı)
+
           Transforms.setNodes(editor, { type: "paragraph" });
         }
       }
     },
-    [editor],
+    [editor]
   );
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
       toggleCodeBlock(event);
       handleEnter(event);
-      // handleCodeBlockEnter(event);
-      // Diğer hotkey'ler...
     },
-    [toggleCodeBlock, handleEnter],
+    [toggleCodeBlock, handleEnter]
   );
 
-  return handleKeyDown ;
+  return handleKeyDown;
 };
 
 export default useEditorHotkeys;
