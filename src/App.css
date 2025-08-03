@@ -43,6 +43,7 @@
 .block-wrapper{
   padding: 0 0.2rem 0 0.2rem;
   border-radius: 0.2rem;
+  display: flex;
 }
 
 .block-wrapper:hover{
